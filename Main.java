@@ -43,7 +43,7 @@ public class Main {
     //Adding a vehicle
     private static void addItem() {
         System.out.println("\nAdd new vehicle");
-        System.out.println("Adding a Car or Truck? (Type C or T");
+        System.out.println("Adding a Car or Truck? (Type C or T): ");
         String type = scanner.nextLine().trim().toUpperCase();
 
         System.out.println("Enter Make: ");
@@ -79,10 +79,20 @@ public class Main {
 
         } else {
             System.out.println("Invalid selection");
+        }//Ends Car or Truck else/if
+
+    }//Ends addItem
+
+    private static void listItems() {
+        System.out.println("\n Inventory");
+
+        if (inventory.isEmpty()) {
+            System.out.println("No inventory");
+        } else {
+            for (Vehicle v : inventory) {
+                v.displayDetails();
+                System.out.println("---");
+            }
         }
-
-    }
-
-
-
+    }//Ends listItems
 }
