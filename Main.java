@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,12 +25,18 @@ public class Main {
                     listItems();
                     break;
                 case "3":
+                    searchInventory();
+                    break;
+                case "4":
+                    exportToCSV();
+                    break;
+                case "5":
                     System.out.println("Exit");
                     break;
                 default:
                     System.out.println("Invalid option. Try again");
             }
-        }while (!choice.equals("3"));
+        }while (!choice.equals("5"));
 
         scanner.close();
 
@@ -36,7 +45,9 @@ public class Main {
         System.out.println("\nBlue Ridge Car Rental system");
         System.out.println("1) Add a Vehicle");
         System.out.println("2) List Inventory");
-        System.out.println("3) Exit");
+        System.out.println("3) Search Inventory");
+        System.out.println("4) Export to CSV");
+        System.out.println("5) Exit");
         System.out.print("Enter choice: ");
     }
 
@@ -95,4 +106,32 @@ public class Main {
             }
         }
     }//Ends listItems
+
+    //Search Inventory
+    private static void searchInventory() {
+        System.out.println("Enter make or model to search for: ");
+        String query = scanner.nextLine().toLowerCase();
+        boolean found = false;
+
+        System.out.println("\n Search results");
+            for (Vehicle v : inventory) {
+                if (v.getMake().toLowerCase().contains(query) ||
+                    v.getModel().toLowerCase().contains(query)) {
+                    v.displayDetails();
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                System.out.println("No vehicles found matching " + query );
+            }
+    }//Ends inventory search
+
+    private static void exportToCSV() {
+        String fileName = "rentalInventory.csv";
+        
+    }
+
+
+
 }//Ends Main
