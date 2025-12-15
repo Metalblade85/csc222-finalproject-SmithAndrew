@@ -129,8 +129,18 @@ public class Main {
 
     private static void exportToCSV() {
         String fileName = "rentalInventory.csv";
-        
-    }
+        try (PrintWriter writer = new PrintWriter( new File(fileName))) {
+            writer.println("Type, Make, Model, Year, Mileage, Passengers, Payload");
+            for (Vehicle v : inventory) {
+                writer.println(v.toCVS);
+            }
+
+            System.out.println("Data exported to" + fileName);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not write to file");
+        }
+    }//Ends export to CSV
 
 
 
