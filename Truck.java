@@ -27,6 +27,6 @@ public class Truck extends Vehicle {
     //Override for exportToCSV
     @Override
     public String toCSV() {
-        return super.toCSV() + "," + getPayload();
+        return super.toCSV() + ",," + getPayload();
     }
 }
