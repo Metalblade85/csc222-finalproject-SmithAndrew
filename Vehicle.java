@@ -39,6 +39,9 @@ public class Vehicle {
     public int getMileage() {return mileage;}
     public void setMileage(int mileage) {this.mileage = mileage;}
 
-    public String toCVS
+    //Method for exportToCSV
+    public String toCSV() {
+        return vehicleType + "," + make + "," + model + "," + year + "," + mileage;
+    }
 
 }

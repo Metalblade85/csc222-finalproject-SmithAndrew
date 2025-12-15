@@ -23,4 +23,10 @@ public class Truck extends Vehicle {
     //Getter/Setter for payload
     public int getPayload() {return payload;}
     public void setPayload(int payload) { this.payload = payload; }
+
+    //Override for exportToCSV
+    @Override
+    public String toCSV() {
+        return super.toCSV() + "," + getPayload();
+    }
 }

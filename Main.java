@@ -132,7 +132,7 @@ public class Main {
         try (PrintWriter writer = new PrintWriter( new File(fileName))) {
             writer.println("Type, Make, Model, Year, Mileage, Passengers, Payload");
             for (Vehicle v : inventory) {
-                writer.println(v.toCVS);
+                writer.println(v.toCSV());
             }
 
             System.out.println("Data exported to" + fileName);

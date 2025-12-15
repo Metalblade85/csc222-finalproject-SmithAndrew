@@ -23,4 +23,10 @@ public class Car extends Vehicle {
     //Getter/Setter for numPassengers
     public int getNumPassengers() {return numPassenger;}
     public void setNumPassengers(int numPassengers) { this.numPassenger = numPassengers; }
+
+    //Override for exportToCSV
+    @Override
+    public String toCSV() {
+        return super.toCSV() + "," + getNumPassengers() + ",";
+    }
 }
