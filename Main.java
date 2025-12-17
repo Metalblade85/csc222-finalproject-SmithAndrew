@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,7 +41,7 @@ public class Main {
 
     }//printHeader menu
     private static void printHeader() {
-        System.out.println("\nBlue Ridge Car Rental system");
+        System.out.println("\n---Blue Ridge Car Rental system---");
         System.out.println("1) Add a Vehicle");
         System.out.println("2) List Inventory");
         System.out.println("3) Search Inventory");
@@ -53,7 +52,7 @@ public class Main {
 
     //Adding a vehicle
     private static void addItem() {
-        System.out.println("\nAdd new vehicle");
+        System.out.println("\n---Add new vehicle---");
         System.out.println("Adding a Car or Truck? (Type C or T): ");
         String type = scanner.nextLine().trim().toUpperCase();
 
@@ -77,7 +76,7 @@ public class Main {
             //Create car object and add to list
             Car newCar = new Car(make, model, year, mileage, passengers);
             inventory.add(newCar);
-            System.out.println(">> Car added successfully!");
+            System.out.println("Car added successfully!");
 
         } else if (type.equals("T")) {
             System.out.print("Enter payload capacity (lbs): ");
@@ -86,23 +85,23 @@ public class Main {
             //Create truck object and add to list
             Truck newTruck = new Truck(make, model, year, mileage, payload);
             inventory.add(newTruck);
-            System.out.println(">> Truck added successfully!");
+            System.out.println("Truck added successfully!");
 
         } else {
-            System.out.println("Invalid selection");
+            System.out.println("xxx-Invalid selection-xxx");
         }//Ends Car or Truck else/if
 
     }//Ends addItem
 
     private static void listItems() {
-        System.out.println("\n Inventory");
+        System.out.println("\n Inventory list:");
 
         if (inventory.isEmpty()) {
-            System.out.println("No inventory");
+            System.out.println("No inventory to show");
         } else {
             for (Vehicle v : inventory) {
                 v.displayDetails();
-                System.out.println("---");
+                System.out.println("---------");
             }
         }
     }//Ends listItems
@@ -113,7 +112,7 @@ public class Main {
         String query = scanner.nextLine().toLowerCase();
         boolean found = false;
 
-        System.out.println("\n Search results");
+        System.out.println("\n Search results:");
             for (Vehicle v : inventory) {
                 if (v.getMake().toLowerCase().contains(query) ||
                     v.getModel().toLowerCase().contains(query)) {
@@ -135,13 +134,11 @@ public class Main {
                 writer.println(v.toCSV());
             }
 
-            System.out.println("Data exported to" + fileName);
+            System.out.println("Data exported to - " + fileName);
 
         } catch (FileNotFoundException e) {
-            System.out.println("Could not write to file");
+            System.out.println("xxx Could not write to file xxx");
         }
     }//Ends export to CSV
-
-
 
 }//Ends Main
